@@ -32,7 +32,8 @@
                     folder.file(number + "." + ext, response.responseText, {binary: true});
                     console.log("downloading file: " + number);
                 } else {
-                    console.log("ERROR: fetching file: " + number);
+                    //console.log("ERROR: fetching file: " + number);
+                    console.log("ERROR: fetching uri: " + url);
                 }
                 remaining--;
                 if(remaining == 0){
