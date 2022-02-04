@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         hentai-cosplays.com batch download
-// @version      0.2
+// @version      0.3
 // @description  downloads full sets from hentai-cosplays.com and hentai-img.com
 // @author       teo3300
 // @include      https://hentai-cosplays.com/*
