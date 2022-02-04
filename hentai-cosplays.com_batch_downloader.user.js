@@ -7,6 +7,8 @@
 // @exclude      https://hentai-cosplays.com/*/attachment/*
 // @include      https://hentai-img.com/*
 // @exclude      https://hentai-img.com/*/attachment/*
+// @include      https://porn-images-xxx.com/*
+// @exclude      https://porn-images-xxx.com/*/attachment/*
 // @grant        GM_xmlhttpRequest
 // @grant        GM_download
 // @require      https://cdnjs.cloudflare.com/ajax/libs/jszip/3.2.2/jszip.min.js
