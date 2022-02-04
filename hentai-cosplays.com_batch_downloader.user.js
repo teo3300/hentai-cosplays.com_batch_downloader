@@ -23,9 +23,10 @@
     var remaining;
 
     function append(zip, folder, base_uri, number, ext, padding){
+        var _URI = base_uri + "/" + number.toString().padStart(padding, '0') + "." + ext
         GM_xmlhttpRequest({
             method: 'GET',
-            url: base_uri + "/" + number.toString().padStart(padding, '0') + "." + ext,
+            url: _URI,
             responseType: "blob",
             onload: function(response){
                 if(response.status === 200){
@@ -33,7 +34,7 @@
                     console.log("downloading file: " + number);
                 } else {
                     //console.log("ERROR: fetching file: " + number);
-                    console.log("ERROR: fetching uri: " + url);
+                    console.log("ERROR: fetching uri: " + _URI);
                 }
                 remaining--;
                 if(remaining == 0){
