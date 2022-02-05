@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         hentai-cosplays.com batch download
-// @version      0.3
+// @version      0.4
 // @description  downloads full sets from hentai-cosplays.com and hentai-img.com
 // @author       teo3300
 // @include      https://hentai-cosplays.com/*
@@ -23,7 +23,7 @@
     var remaining;
 
     function append(zip, folder, base_uri, number, ext, padding){
-        var _URI = base_uri + "/" + number.toString().padStart(padding, '0') + "." + ext
+        var _URI = base_uri + '/' + number.toString().padStart(padding, '0') + "." + ext
         GM_xmlhttpRequest({
             method: 'GET',
             url: _URI,
@@ -107,6 +107,7 @@
         src_doc = src_doc.firstElementChild.firstElementChild.firstElementChild.src;
     }
     var src_base_uri = src_doc.substring(0, src_doc.lastIndexOf('/'));
+    console.log("Target: " + src_base_uri);
     var src_ext = src_doc.split('.').pop();
     var padding_length = src_doc.length - src_base_uri.length - src_ext.length - 3;
 
