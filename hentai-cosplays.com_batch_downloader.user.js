@@ -107,10 +107,10 @@
         src_doc = src_doc.firstElementChild.firstElementChild.firstElementChild.src;
     }
     var src_base_uri = src_doc.substring(0, src_doc.lastIndexOf('/'));
-    if(/.*\/p=[0-9]+$/.test(src_base_uri)){ src_base_uri = src_base_uri.substring(0, src_base_uri.lastIndexOf('/')); } // prevent from downloading rescaled images
-    console.log("Target: " + src_base_uri);
     var src_ext = src_doc.split('.').pop();
     var padding_length = src_doc.length - src_base_uri.length - src_ext.length - 3;
+    if(/.*\/p=[0-9]+$/.test(src_base_uri)){ src_base_uri = src_base_uri.substring(0, src_base_uri.lastIndexOf('/')); } // prevent from downloading rescaled images
+    console.log("Target: " + src_base_uri);
 
     if_box.appendChild(download_button);
 
