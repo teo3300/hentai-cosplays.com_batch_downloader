@@ -24,28 +24,42 @@
     var set_last;
     var remaining;
 
+    var common_exts = ["jpg","jpeg","png","gif","webp"];
+
     function append(zip, folder, base_uri, number, ext, padding){
-        var _URI = base_uri + '/' + number.toString().padStart(padding, '0') + "." + ext
-        GM_xmlhttpRequest({
-            method: 'GET',
-            url: _URI,
-            responseType: "blob",
-            onload: function(response){
-                if(response.status === 200){
-                    folder.file(number + "." + ext, response.responseText, {binary: true});
-                    console.log("downloading file: " + number);
-                } else {
-                    //console.log("ERROR: fetching file: " + number);
-                    console.log("ERROR: fetching uri: " + _URI);
+        var _URI = base_uri + '/' + number.toString().padStart(padding, '0') + "."
+        var success = false;
+        function reqExt(ext){
+            GM_xmlhttpRequest({
+                method: 'GET',
+                url: _URI,
+                responseType: "blob",
+                onload: function(response){
+                    if(response.status === 200){
+                        folder.file(number + "." + ext, response.responseText, {binary: true});
+                        console.log("downloading file: " + number);
+                        success = true;
+                        remaining--;
+                    } else {
+                        //console.log("ERROR: fetching file: " + number);
+                        console.log("ERROR: fetching uri: " + _URI);
+                    }
+                    if(remaining == 0){
+                        zip.generateAsync({type:"blob"}).then(function(content){
+                            saveAs(content, content_group + ".zip");
+                        });
+                    }
                 }
-                remaining--;
-                if(remaining == 0){
-                    zip.generateAsync({type:"blob"}).then(function(content){
-                        saveAs(content, content_group + ".zip");
-                    });
+            });
+        }
+        reqExt(ext);
+        if (success == false) {
+            for (let i = 0; i < common_exts.length && (success == false); i++) {
+                if (common_exts[i] != ext) {
+                    reqExt(common_exts[i]);
                 }
             }
-        });
+        }
     }
 
     function batch_download(){
