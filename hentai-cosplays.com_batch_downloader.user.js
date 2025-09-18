@@ -57,7 +57,7 @@
         if (success == false) {
             for (let i = 0; i < common_exts.length && (success == false); i++) {
                 if (common_exts[i] != ext) {
-                    console.log("ERROR: retrying with ." + common_exts[i]);
+                    console.log("ERROR: (image " + number + ") retrying with " + number + "." + common_exts[i]);
                     reqExt(common_exts[i]);
                 }
             }
