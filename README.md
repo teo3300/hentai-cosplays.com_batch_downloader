@@ -8,11 +8,13 @@ When opening a set adds a button with the label `Download full set` under the se
 
 ## Installation
 You can install this script by using [this](https://github.com/teo3300/hentai-cosplays.com_batch_downloader/raw/main/hentai-cosplays.com_batch_downloader.user.js)
+
 Requires an userscript executor
 
 ## Troubleshooting
 - **The button does not appear under the title set**: make sure that the script has permissions to run for the specified domain (from the userscript executor extension)
-  Also make sure that you opened a link without the `/attachment/<number>` suffix, to fix this remove the last part of the URL
+
+Also make sure that you opened a link without the `/attachment/<number>` suffix, to fix this remove the last part of the URL
   
   ```https://hentai-cosplays.com/image/*/attachment/<number>```
   
@@ -20,7 +22,7 @@ Requires an userscript executor
   
   ```https://hentai-cosplays.com/image/*```
   
-  this is necessary since the first page does not contain information about other pages' images
+This is necessary since the first page does not contain information about other pages' images
   
 - **How do I know that the program is working?**: pres `F12` (or open your brower inspector) to check if the script is working: the script outputs on the browser console (I'm lazy, didn't want to implement an HTML interface)
 
