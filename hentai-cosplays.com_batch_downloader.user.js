@@ -23,6 +23,7 @@
     'use strict';
     var set_last;
     var remaining;
+    var archive_prompt_up = false;
 
     var common_exts = ["jpg","png","gif","webp","jpeg"];
 
@@ -32,7 +33,7 @@
         function reqExt(ext){
             GM_xmlhttpRequest({
                 method: 'GET',
-                url: _URI + ext,
+                url: (_URI + ext),
                 responseType: "blob",
                 onload: function(response){
                     if(response.status === 200){
@@ -40,14 +41,14 @@
                         console.log("downloading file: " + number);
                         success = true;
                         remaining--;
-                    } else {
-                        //console.log("ERROR: fetching file: " + number);
-                        console.log("ERROR: fetching uri: " + _URI);
                     }
-                    if(remaining == 0){
-                        zip.generateAsync({type:"blob"}).then(function(content){
-                            saveAs(content, content_group + ".zip");
-                        });
+                    if (archive_prompt_up == false) {
+                        if(remaining == 0){
+                            archive_prompt_up = true; // such parallelism, much fucked
+                            zip.generateAsync({type:"blob"}).then(function(content){
+                                saveAs(content, content_group + ".zip");
+                            });
+                        }
                     }
                 }
             });
@@ -56,6 +57,7 @@
         if (success == false) {
             for (let i = 0; i < common_exts.length && (success == false); i++) {
                 if (common_exts[i] != ext) {
+                    console.log("ERROR: retrying with ." + common_exts[i]);
                     reqExt(common_exts[i]);
                 }
             }
