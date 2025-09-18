@@ -24,7 +24,7 @@
     var set_last;
     var remaining;
 
-    var common_exts = ["jpg","jpeg","png","gif","webp"];
+    var common_exts = ["jpg","png","gif","webp","jpeg"];
 
     function append(zip, folder, base_uri, number, ext, padding){
         var _URI = base_uri + '/' + number.toString().padStart(padding, '0') + "."
@@ -32,7 +32,7 @@
         function reqExt(ext){
             GM_xmlhttpRequest({
                 method: 'GET',
-                url: _URI,
+                url: _URI + ext,
                 responseType: "blob",
                 onload: function(response){
                     if(response.status === 200){
