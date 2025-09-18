@@ -3,6 +3,8 @@
 // @version      0.5
 // @description  downloads full sets from hentai-cosplays.com and hentai-img.com
 // @author       teo3300
+// @include      https://hentai-cosplay-xxx.com/*
+// @exclude      https://hentai-cosplay-xxx.com/*/attachment/*
 // @include      https://hentai-cosplays.com/*
 // @exclude      https://hentai-cosplays.com/*/attachment/*
 // @include      https://hentai-img.com/*
